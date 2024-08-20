@@ -10,23 +10,25 @@
       </ul>
     </div>
   <% end %>
+  <div class="row">
+    <div class="col">
+      <div class="form-floating mb-3">
+        <%= form.text_field :address, class: "form-control", placeholder: "first name", id: "floatingInput" %>
+        <%= form.label :address, style: "display: block", for: "floatingInput" %>
+      </div>
+    </div>
 
-  <div>
-    <%= form.label :address, style: "display: block" %>
-    <%= form.text_field :address %>
-  </div>
+    <div class="col">
+      <div class="form-floating mb-3">
+        <%= form.text_field :latitude, class: "form-control", placeholder: "first name", id: "floatingInput", type: :hidden %>
+      </div>
+    </div>
 
-  <div>
-    <%= form.label :latitude, style: "display: block" %>
-    <%= form.text_field :latitude %>
-  </div>
+    <div class="form-floating mb-3">
+      <%= form.text_field :longitude, class: "form-control", placeholder: "first name", id: "floatingInput", type: :hidden %>
+    </div>
 
-  <div>
-    <%= form.label :longitude, style: "display: block" %>
-    <%= form.text_field :longitude %>
-  </div>
-
-  <div>
-    <%= form.submit %>
-  </div>
+    <div>
+      <%= form.submit class: "btn btn-dark" %>
+    </div>
 <% end %>
