@@ -53,6 +53,8 @@ class LocationsController < ApplicationController
 
   # DELETE /locations/1 or /locations/1.json
   def destroy
+    
+
     @location.destroy!
 
     respond_to do |format|
