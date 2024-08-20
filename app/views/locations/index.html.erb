@@ -1,0 +1,29 @@
+<h1>Locations</h1>
+
+<table class="table table-borderless table-hover table-info rounded">
+      <thead class="table-primary rounded">
+        <tr>
+          <th>City</th>
+          <th>Latitude</th>
+          <th>Longitude</th>
+        </tr>
+      </thead>
+
+
+  <tbody>
+    <% @locations.each do |location| %>
+        <tr>
+          <td> <%= link_to location.address, location, class:"btn btn-info" %> </td>
+          <td>
+            <%= location.latitude %>
+          </td>
+
+        <td>
+          <%= location.longitude %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to "New location", new_location_path, class:"btn btn-dark" %>

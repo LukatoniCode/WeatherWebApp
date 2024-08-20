@@ -1,0 +1,15 @@
+<div class="mb-4 p-5 bg-dark text-white rounded">
+  <h2><%= render @location %> Current temperature</h2>
+  <h1><%= @weather_temp %>&deg;C</h1>
+
+</div>
+<div>
+  <%= link_to "Edit this location", edit_location_path(@location), class:"btn btn-dark" %> |
+  <%= link_to "Back to locations", locations_path, class:"btn btn-dark" %>
+
+  <p>
+    
+  </p>
+
+  <%= button_to "Destroy this location", @location, method: :delete, class:"btn btn-danger" %>
+</div>
