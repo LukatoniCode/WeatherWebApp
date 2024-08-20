@@ -8,7 +8,7 @@ import sys
 
 # Setup the Open-Meteo API client with cache and retry on error
 cache_session = requests_cache.CachedSession('.cache', expire_after = 3600)
-retry_session = retry(cache_session, retries = 5, backoff_factor = 0.2)
+retry_session = retry(cache_session, retries = 10, backoff_factor = 0.2)
 openmeteo = openmeteo_requests.Client(session = retry_session)
 
 # Make sure all required weather variables are listed here
@@ -25,7 +25,7 @@ params = {
 responses = openmeteo.weather_api(url, params=params)
 
 # Process first location. Add a for-loop for multiple locations or weather models
-response = responses[0]
+response = responses[0 - 1]
 #print(f"Coordinates {response.Latitude()}°N {response.Longitude()}°E")
 #print(f"Elevation {response.Elevation()} m asl")
 #print(f"Timezone {response.Timezone()} {response.TimezoneAbbreviation()}")
