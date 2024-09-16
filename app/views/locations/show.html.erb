@@ -1,16 +1,65 @@
-<div class="mb-4 p-5 bg-dark text-white rounded">
+<head>
+  <style>
+    .glass{
+      /* From https://css.glass */
+      background: rgba(104, 255, 255, 0.21);
+      border-radius: 16px;
+      backdrop-filter: blur(16.5px);
+      -webkit-backdrop-filter: blur(16.5px);
+      border: 1px solid rgba(104, 255, 255, 0.01);
+    }
+    .glassdngr{
+      /* From https://css.glass */
+      background: rgba(104, 255, 255, 0.21);
+      border-radius: 16px;
+      backdrop-filter: blur(11px);
+      -webkit-backdrop-filter: blur(11px);
+      border: 1px solid rgba(104, 255, 255, 0.01);
+    }
+    .glass-btn{
+      /* From https://css.glass */
+      background: rgba(104, 255, 255, 0.21);
+      border-radius: 5px;
+      backdrop-filter: blur(16.5px);
+      -webkit-backdrop-filter: blur(16.5px);
+      border: 1px solid rgba(104, 255, 255, 0.01);
+    }
+  </style>
+</head>
+
+<div class="mb-4 p-5 glass text-white rounded">
   <h2><%= render @location %> Current temperature: </h2>
   <h1 style="font-size: 50px"><%= @weather_temp %>&deg;C</h1>
 
 </div>
 <div>
-  <%= link_to "Edit this location", edit_location_path(@location), class:"btn btn-dark" %> |
-  <%= link_to "Back to locations", locations_path, class:"btn btn-dark" %>
+  <%= link_to "Edit this location", edit_location_path(@location), class:"btn glass-btn" %> |
+  <%= link_to "Back to locations", locations_path, class:"btn glass-btn" %>
 
   <p>
     
   </p>
 
-  <%= button_to "Destroy this location", @location, method: :delete, form: { data: { turbo_confirm: "Are you sure?" }}, class:"btn btn-danger" %>
+  <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">
+    Destroy this location
+  </button>
+
+  <!-- Modal -->
+  <div class="glassdngr modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Delete warning</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          Are you sure?
+        </div>
+        <div class="modal-footer">
+          <%= button_to "Destroy this location", @location, method: :delete, class:"btn btn-danger" %>
+        </div>
+      </div>
+    </div>
+  </div>
 
 </div>

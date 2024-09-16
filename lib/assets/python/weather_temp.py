@@ -25,7 +25,7 @@ params = {
 responses = openmeteo.weather_api(url, params=params)
 
 # Process first location. Add a for-loop for multiple locations or weather models
-response = responses[0 - 1]
+response = responses[0]
 #print(f"Coordinates {response.Latitude()}°N {response.Longitude()}°E")
 #print(f"Elevation {response.Elevation()} m asl")
 #print(f"Timezone {response.Timezone()} {response.TimezoneAbbreviation()}")

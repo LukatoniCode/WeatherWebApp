@@ -1,9 +1,9 @@
 source "https://rubygems.org"
 
-ruby "3.3.4"
+ruby "3.3.5"
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
-gem "rails", "~> 7.1.3", ">= 7.1.3.4"
+gem "rails", "~> 7.2.1"
 
 gem 'geocoder', '~> 1.8', '>= 1.8.3'
 
@@ -71,3 +71,7 @@ group :test do
 end
 
 gem "ransack", "~> 4.2"
+
+gem 'fiddle', '~> 1.1', '>= 1.1.2'
+
+gem 'ostruct', '~> 0.6.0'

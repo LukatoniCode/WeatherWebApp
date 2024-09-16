@@ -17,7 +17,10 @@
     <%= javascript_importmap_tags %>
     <style>
       body {
-        background-color: #82e1eb;
+        background-image: url(/assets/sky1.png);
+        background-repeat: no-repeat;
+        background-attachment: fixed;  
+        background-size: cover;
       }
     </style>
   </head>
@@ -28,7 +31,7 @@
       <% if notice %>
         <%= render 'layouts/alerts' %>
       <% end %>
-      
+
       <%= yield %>
     </div>
 

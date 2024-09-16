@@ -1,6 +1,39 @@
-<h1>Locations</h1>
+<head>
+  <style>
+    .tras{
+      /* From https://css.glass */
+      background: rgba(104, 255, 255, 0);
+      border-radius: 16px;
+      backdrop-filter: blur(0px);
+      -webkit-backdrop-filter: blur(0px);
+      border: 1px solid rgba(104, 255, 255, 0.01);
+    }
+    .glass{
+      /* From https://css.glass */
+      background: rgba(104, 255, 255, 0.21);
+      border-radius: 16px;
+      backdrop-filter: blur(16.5px);
+      -webkit-backdrop-filter: blur(16.5px);
+      border: 1px solid rgba(104, 255, 255, 0.01);
+    }
+    .glassbls{
+      /* From https://css.glass */
+      background: rgba(0, 0, 0, 0.37);
+      border-radius: 16px;
+      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+      backdrop-filter: blur(10.1px);
+      -webkit-backdrop-filter: blur(10.1px);
+      border: 1px solid rgba(0, 0, 0, 0.01);
+    }
+    div.a {
+      text-align: center;
+    }
+  </style>
+</head>
 
-<%= link_to "New location", new_location_path, class:"btn btn-dark" %>
+<div class="mb-4 p-2 glassbls text-white rounded container a">
+  <h1>Locations</h1>
+</div>
 
 <p>
   
@@ -8,8 +41,8 @@
 
 <div id="locations">
   <% @locations.each do |location| %>
-  <div class="mb-4 p-5 bg-info text-white rounded">
-    <%= link_to location.address, location, class:"btn btn-info btn-xl" %>
+  <div class="mb-4 p-5 glass text-white rounded container a">
+    <%= link_to location.address, location, class:"btn btn-xl" %>
   </div>
   <% end %>
 </div>

@@ -1,7 +1,42 @@
-<h1>New location</h1>
+<head>
+  <style>
+    .tras{
+      /* From https://css.glass */
+      background: rgba(104, 255, 255, 0);
+      border-radius: 16px;
+      backdrop-filter: blur(0px);
+      -webkit-backdrop-filter: blur(0px);
+      border: 1px solid rgba(104, 255, 255, 0.01);
+    }
+    .glass{
+      /* From https://css.glass */
+      background: rgba(104, 255, 255, 0.21);
+      border-radius: 16px;
+      backdrop-filter: blur(16.5px);
+      -webkit-backdrop-filter: blur(16.5px);
+      border: 1px solid rgba(104, 255, 255, 0.01);
+    }
+    .blacktras{
+      /* From https://css.glass */
+      background: rgba(0, 0, 0, 0.37);
+      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+      backdrop-filter: blur(10.1px);
+      -webkit-backdrop-filter: blur(10.1px);
+      border: 1px solid rgba(0, 0, 0, 0.01);
+    }
+    div.a {
+      text-align: center;
+    }
+  </style>
+</head>
 
-<%= render "form", location: @location %>
+<div class="mb-4 p-2 glass text-black rounded a">
+  <h1>New location</h1>
+</div>
 
+<div class="mb-4 p-5 glass text-black rounded">
+  <%= render "form", location: @location %>
+</div>
 <br>
 
 <div>
