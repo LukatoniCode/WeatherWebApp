@@ -75,3 +75,7 @@ gem "ransack", "~> 4.2"
 gem 'fiddle', '~> 1.1', '>= 1.1.2'
 
 gem 'ostruct', '~> 0.6.0'
+
+gem 'open-meteo', '~> 0.3.2'
+
+gem 'date', '~> 3.3', '>= 3.3.4'

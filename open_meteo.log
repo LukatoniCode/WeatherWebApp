@@ -1,0 +1,5 @@
+# Logfile created on 2024-09-19 20:21:49 +0200 by logger.rb/v1.6.0
+D, [2024-09-19T20:36:58.604009 #2176] DEBUG -- : Data corrupted at path ''. Cannot initialize MultiDomains from invalid String value dwd_icon.
+D, [2024-09-19T20:37:15.363636 #2176] DEBUG -- : Data corrupted at path ''. Cannot initialize MultiDomains from invalid String value best_match,dwd_icon.
+D, [2024-09-19T20:51:34.364023 #2176] DEBUG -- : Data corrupted at path ''. Cannot initialize SurfacePressureAndHeightVariable<VariableAndPreviousDay, ForecastPressureVariable, ForecastHeightVariable> from invalid String value current=temperature_2m.
+D, [2024-09-19T23:33:35.347786 #13384] DEBUG -- : Data corrupted at path ''. Cannot initialize ForecastVariableDaily from invalid String value weather_code,temperature_2m.
