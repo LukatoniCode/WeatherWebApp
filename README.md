@@ -27,4 +27,5 @@ This is an open source ruby on rails weather website
  - [OpenMeteo API](https://open-meteo.com/)
  - [Geocoder | Complete geocoding solution for Ruby.](https://github.com/alexreisner/geocoder)
  - [Ruby on Rails](https://rubyonrails.org/)
+ - [Makin-Things/weather-icons](https://github.com/Makin-Things/weather-icons?tab=MIT-1-ov-file)
 
