@@ -35,7 +35,7 @@ class LocationsController < ApplicationController
     client = OpenMeteo::Client.new
 
     location = OpenMeteo::Entities::Location.new(latitude: lat.to_d, longitude: lon.to_d)
-    variables = { current: %i[weather_code temperature_2m rain], daily: %i[weather_code temperature_2m_max temperature_2m_min rain_sum]}
+    variables = { current: %i[weather_code temperature_2m rain snowfall cloud_cover is_day], daily: %i[weather_code temperature_2m_max temperature_2m_min rain_sum snowfall_sum]}
     data = OpenMeteo::Forecast.new(client:).get(location:, variables:, model: :dwd_icon)
 
     daily_forecast = data.daily.items
@@ -60,19 +60,25 @@ class LocationsController < ApplicationController
     @max_temp_tomorrow = tomorrow_forecast.temperature_2m_max
     @min_temp_tomorrow = tomorrow_forecast.temperature_2m_min
     @rain_tomorrow = tomorrow_forecast.rain_sum.to_i
+    @snow_tomorrow = tomorrow_forecast.snowfall_sum
     @max_temp_tomorrow2 = tomorrow_2_forecast.temperature_2m_max
     @min_temp_tomorrow2 = tomorrow_2_forecast.temperature_2m_min
+    @snow_tomorrow2 = tomorrow_2_forecast.snowfall_sum
     @rain_tomorrow2 = tomorrow_2_forecast.rain_sum.to_i
     @max_temp_tomorrow3 = tomorrow_3_forecast.temperature_2m_max
     @min_temp_tomorrow3 = tomorrow_3_forecast.temperature_2m_min
+    @snow_tomorrow3 = tomorrow_3_forecast.snowfall_sum
     @rain_tomorrow3 = tomorrow_3_forecast.rain_sum.to_i
     @max_temp_tomorrow4 = tomorrow_4_forecast.temperature_2m_max
     @min_temp_tomorrow4 = tomorrow_4_forecast.temperature_2m_min
+    @snow_tomorrow4 = tomorrow_4_forecast.snowfall_sum
     @rain_tomorrow4 = tomorrow_4_forecast.rain_sum.to_i
     @max_temp_tomorrow5 = tomorrow_5_forecast.temperature_2m_max
     @min_temp_tomorrow5 = tomorrow_5_forecast.temperature_2m_min
 
-    #puts data.current.inspect
+    @is_day = data.current.instance_variable_get(:@item).instance_variable_get(:@raw_json)["is_day"]
+    @cloud_today = data.current.instance_variable_get(:@item).instance_variable_get(:@raw_json)["cloud_cover"]
+    @snow_today = data.current.instance_variable_get(:@item).instance_variable_get(:@raw_json)["snowfall"]
     @output = data.current.instance_variable_get(:@item).instance_variable_get(:@raw_json)["temperature_2m"]
     #@rain_today_s = data.daily.instance_variable_get(:@item).instance_variable_get(:@raw_json)["rain_sum"]
     @rain_today_s = today_forecast.rain_sum

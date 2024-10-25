@@ -34,15 +34,45 @@
 
 <div class="mb-4 p-5 glass text-white rounded d-flex justify-content-between">
   <div>
-    <h2><%= render @location %> Current temperature: </h2>
+    <h2><%= render @location %> Current temperature:</h2>
     <h1 style="font-size: 50px"><%= @output %>&deg;C</h1>
   </div>
   <div>
-    <% if @rain_today_s >= 10 %>
-      <img src="https://raw.githubusercontent.com/Makin-Things/weather-icons/master/animated/rainy-3.svg" width="256">
+    <% if @is_day == 1 %>
+      <% if @snow_today > 0.2 %>
+        <img src="https://raw.githubusercontent.com/Makin-Things/weather-icons/master/animated/snowy-2.svg" width="256">
+      <% end %>
+      <% if @snow_today < 0.2 %>
+        <% if @rain_today_s >= 5 %>
+          <img src="https://raw.githubusercontent.com/Makin-Things/weather-icons/master/animated/rainy-3.svg" width="256">
+        <% end %>
+        <% if @rain_today_s < 5 %>
+          <% if @cloud_today > 50 %>
+            <img src="https://raw.githubusercontent.com/Makin-Things/weather-icons/master/animated/cloudy-1-day.svg" width="256">
+          <% end %>
+          <% if @cloud_today < 50 %>
+            <img src="https://raw.githubusercontent.com/Makin-Things/weather-icons/master/animated/clear-day.svg" width="256">
+          <% end %>
+        <% end %>
+      <% end %>
     <% end %>
-    <% if @rain_today_s < 10 %>
-      <img src="https://raw.githubusercontent.com/Makin-Things/weather-icons/master/animated/cloudy-1-day.svg" width="256">
+    <% if @is_day == 0 %>
+      <% if @snow_today > 0.2 %>
+        <img src="https://raw.githubusercontent.com/Makin-Things/weather-icons/master/animated/snowy-2-night.svg" width="256">
+      <% end %>
+      <% if @snow_today < 0.2 %>
+        <% if @rain_today_s >= 5 %>
+          <img src="https://raw.githubusercontent.com/Makin-Things/weather-icons/master/animated/rainy-3-night.svg" width="256">
+        <% end %>
+        <% if @rain_today_s < 5 %>
+          <% if @cloud_today > 50 %>
+            <img src="https://raw.githubusercontent.com/Makin-Things/weather-icons/master/animated/cloudy-1-night.svg" width="256">
+          <% end %>
+          <% if @cloud_today < 50 %>
+            <img src="https://raw.githubusercontent.com/Makin-Things/weather-icons/master/animated/clear-night.svg" width="256">
+          <% end %>
+        <% end %>
+      <% end %>
     <% end %>
   </div>
 </div>
@@ -51,11 +81,16 @@
   <div class=" glass card" style="width: 18rem;">
     <div class="card-body">
       <h3 class="card-title a">Tomorrow</h3>
-      <% if @rain_tomorrow >= 5 %>
-        <img src="https://raw.githubusercontent.com/Makin-Things/weather-icons/master/animated/rainy-3.svg" width="256">
+      <% if @snow_tomorrow > 0.2 %>
+        <img src="https://raw.githubusercontent.com/Makin-Things/weather-icons/master/animated/snowy-2.svg" width="256">
       <% end %>
-      <% if @rain_tomorrow < 5 %>
-        <img src="https://raw.githubusercontent.com/Makin-Things/weather-icons/master/animated/cloudy-1-day.svg" width="256">
+      <% if @snow_tomorrow < 0.2 %>
+        <% if @rain_tomorrow >= 5 %>
+          <img src="https://raw.githubusercontent.com/Makin-Things/weather-icons/master/animated/rainy-3.svg" width="256">
+        <% end %>
+        <% if @rain_tomorrow < 5 %>
+          <img src="https://raw.githubusercontent.com/Makin-Things/weather-icons/master/animated/cloudy-1-day.svg" width="256">
+        <% end %>
       <% end %>
       <h2 class="card-text a"><%= @min_temp_tomorrow %>&deg;C/<%= @max_temp_tomorrow %>&deg;C</h1>
     </div>
@@ -63,11 +98,16 @@
   <div class=" glass card" style="width: 18rem;">
     <div class="card-body">
       <h3 class="card-title a"><%= @tomorrow_2_name %></h3>
-      <% if @rain_tomorrow2 >= 5 %>
-        <img src="https://raw.githubusercontent.com/Makin-Things/weather-icons/master/animated/rainy-3.svg" width="256">
+      <% if @snow_tomorrow2 > 0.2 %>
+        <img src="https://raw.githubusercontent.com/Makin-Things/weather-icons/master/animated/snowy-2.svg" width="256">
       <% end %>
-      <% if @rain_tomorrow2 < 5 %>
-        <img src="https://raw.githubusercontent.com/Makin-Things/weather-icons/master/animated/cloudy-1-day.svg" width="256">
+      <% if @snow_tomorrow2 < 0.2 %>
+        <% if @rain_tomorrow2 >= 5 %>
+          <img src="https://raw.githubusercontent.com/Makin-Things/weather-icons/master/animated/rainy-3.svg" width="256">
+        <% end %>
+        <% if @rain_tomorrow2 < 5 %>
+          <img src="https://raw.githubusercontent.com/Makin-Things/weather-icons/master/animated/cloudy-1-day.svg" width="256">
+        <% end %>
       <% end %>
       <h2 class="card-text a"><%= @min_temp_tomorrow2 %>&deg;C/<%= @max_temp_tomorrow2 %>&deg;C</h1>
     </div>
@@ -75,11 +115,16 @@
   <div class=" glass card" style="width: 18rem;">
     <div class="card-body">
       <h3 class="card-title a"><%= @tomorrow_3_name %></h3>
-      <% if @rain_tomorrow3 >= 5 %>
-        <img src="https://raw.githubusercontent.com/Makin-Things/weather-icons/master/animated/rainy-3.svg" width="256">
+      <% if @snow_tomorrow3 > 0.2 %>
+        <img src="https://raw.githubusercontent.com/Makin-Things/weather-icons/master/animated/snowy-2.svg" width="256">
       <% end %>
-      <% if @rain_tomorrow3 < 5 %>
-        <img src="https://raw.githubusercontent.com/Makin-Things/weather-icons/master/animated/cloudy-1-day.svg" width="256">
+      <% if @snow_tomorrow3 < 0.2 %>
+        <% if @rain_tomorrow3 >= 5 %>
+          <img src="https://raw.githubusercontent.com/Makin-Things/weather-icons/master/animated/rainy-3.svg" width="256">
+        <% end %>
+        <% if @rain_tomorrow3 < 5 %>
+          <img src="https://raw.githubusercontent.com/Makin-Things/weather-icons/master/animated/cloudy-1-day.svg" width="256">
+        <% end %>
       <% end %>
       <h2 class="card-text a"><%= @min_temp_tomorrow3 %>&deg;C/<%= @max_temp_tomorrow3 %>&deg;C</h1>
     </div>
@@ -87,11 +132,16 @@
   <div class=" glass card" style="width: 18rem;">
     <div class="card-body">
       <h3 class="card-title a"><%= @tomorrow_4_name %></h3>
-      <% if @rain_tomorrow4 >= 5 %>
-        <img src="https://raw.githubusercontent.com/Makin-Things/weather-icons/master/animated/rainy-3.svg" width="256">
+      <% if @snow_tomorrow4 > 0.2 %>
+        <img src="https://raw.githubusercontent.com/Makin-Things/weather-icons/master/animated/snowy-2.svg" width="256">
       <% end %>
-      <% if @rain_tomorrow4 < 5 %>
-        <img src="https://raw.githubusercontent.com/Makin-Things/weather-icons/master/animated/cloudy-1-day.svg" width="256">
+      <% if @snow_tomorrow4 < 0.2 %>
+        <% if @rain_tomorrow4 >= 5 %>
+          <img src="https://raw.githubusercontent.com/Makin-Things/weather-icons/master/animated/rainy-3.svg" width="256">
+        <% end %>
+        <% if @rain_tomorrow4 < 5 %>
+          <img src="https://raw.githubusercontent.com/Makin-Things/weather-icons/master/animated/cloudy-1-day.svg" width="256">
+        <% end %>
       <% end %>
       <h2 class="card-text a"><%= @min_temp_tomorrow4 %>&deg;C/<%= @max_temp_tomorrow4 %>&deg;C</h1>
     </div>
