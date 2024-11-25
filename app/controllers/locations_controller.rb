@@ -11,6 +11,7 @@ class LocationsController < ApplicationController
 
     require 'date'
     require "open_meteo"
+    require 'time'
 
     lat = @location.latitude
     lon = @location.longitude
@@ -35,8 +36,46 @@ class LocationsController < ApplicationController
     client = OpenMeteo::Client.new
 
     location = OpenMeteo::Entities::Location.new(latitude: lat.to_d, longitude: lon.to_d)
-    variables = { current: %i[weather_code temperature_2m rain snowfall cloud_cover is_day], daily: %i[weather_code temperature_2m_max temperature_2m_min rain_sum snowfall_sum]}
+    variables = { current: %i[weather_code temperature_2m rain snowfall cloud_cover is_day], daily: %i[weather_code temperature_2m_max temperature_2m_min rain_sum snowfall_sum], hourly: %i[temperature_2m rain snowfall cloud_cover visibility]}
     data = OpenMeteo::Forecast.new(client:).get(location:, variables:, model: :dwd_icon)
+
+    currenttime = Time.now
+    later = currenttime + (4 * 3600)
+    later4 = currenttime + (8 * 3600)
+    later8 = currenttime + (12 * 3600)
+    later12 = currenttime + (16 * 3600)
+    later16 = currenttime + (20 * 3600)
+    later20 = currenttime + (24 * 3600)
+    # Format the time as desired
+    formatted_ctime = later.strftime("%Y-%m-%dT%H:00")
+    formatted_l4time = later4.strftime("%Y-%m-%dT%H:00")
+    formatted_l8time = later8.strftime("%Y-%m-%dT%H:00")
+    formatted_l12time = later12.strftime("%Y-%m-%dT%H:00")
+    formatted_l16time = later16.strftime("%Y-%m-%dT%H:00")
+    formatted_l20time = later20.strftime("%Y-%m-%dT%H:00")
+    @formatted_chtime = later.strftime("%Hh")
+    @formatted_cl4htime = later4.strftime("%Hh")
+    @formatted_cl8htime = later8.strftime("%Hh")
+    @formatted_cl12htime = later12.strftime("%Hh")
+    @formatted_cl16htime = later16.strftime("%Hh")
+    @formatted_cl20htime = later20.strftime("%Hh")
+
+    now = formatted_ctime
+
+    hourly_forecast = data.hourly.items
+
+    currenttime_forecast = hourly_forecast.find { |item| (item.time.to_time - now.to_time).abs < 60 }
+    @currenttemp = currenttime_forecast.temperature_2m
+    time_forecast4 = hourly_forecast.find { |item| item.time == formatted_l4time }
+    @later4temp = time_forecast4.temperature_2m
+    time_forecast8 = hourly_forecast.find { |item| item.time == formatted_l8time }
+    @later8temp = time_forecast8.temperature_2m
+    time_forecast12 = hourly_forecast.find { |item| item.time == formatted_l12time }
+    @later12temp = time_forecast12.temperature_2m
+    time_forecast16 = hourly_forecast.find { |item| item.time == formatted_l16time }
+    @later16temp = time_forecast16.temperature_2m
+    time_forecast20 = hourly_forecast.find { |item| item.time == formatted_l20time }
+    @later20temp = time_forecast20.temperature_2m
 
     daily_forecast = data.daily.items
 
@@ -83,7 +122,7 @@ class LocationsController < ApplicationController
     #@rain_today_s = data.daily.instance_variable_get(:@item).instance_variable_get(:@raw_json)["rain_sum"]
     @rain_today_s = today_forecast.rain_sum
     #rain_today_tets = today_forecast.rain_sum
-    #puts rain_today_test = data.daily.instance_variable_get(:@item).instance_variable_get(:@raw_json)["rain_sum"]
+    #puts currenttime
     #@rain_today = rain_today_s.to_i
     #puts data.daily.inspect
     #puts data.hourly
@@ -135,7 +174,7 @@ class LocationsController < ApplicationController
 
   # DELETE /locations/1 or /locations/1.json
   def destroy
-    
+
 
     @location.destroy!
 

@@ -77,7 +77,109 @@
   </div>
 </div>
 
-<div class="mb-4 p-5 glass text-white rounded d-flex justify-content-between">
+<div class="mb-4 p-5 glass text-white rounded d-flex justify-content-evenly">
+  <div class=" glass card" style="width: 12rem;">
+    <div class="card-body">
+      <h3 class="card-title a"><%= @formatted_chtime %></h3> <!-- prikaz trenutne temperature i ikone za trenutnu prognozu za sutra -->
+      <% if @snow_tomorrow > 0.2 %>
+        <img src="https://raw.githubusercontent.com/Makin-Things/weather-icons/master/animated/snowy-2.svg" width="171">
+      <% end %>
+      <% if @snow_tomorrow < 0.2 %>
+        <% if @rain_tomorrow >= 5 %>
+          <img src="https://raw.githubusercontent.com/Makin-Things/weather-icons/master/animated/rainy-3.svg" width="171">
+        <% end %>
+        <% if @rain_tomorrow < 5 %>
+          <img src="https://raw.githubusercontent.com/Makin-Things/weather-icons/master/animated/cloudy-1-day.svg" width="171">
+        <% end %>
+      <% end %>
+      <h2 class="card-text a"><%= @currenttemp %>&deg;C</h2>
+    </div>
+  </div>
+  <div class=" glass card" style="width: 12rem;">
+    <div class="card-body">
+      <h3 class="card-title a"><%= @formatted_cl4htime %></h3> <!-- prikaz trenutne temperature i ikone za trenutnu prognozu za prekosutra -->
+      <% if @snow_tomorrow2 > 0.2 %>
+        <img src="https://raw.githubusercontent.com/Makin-Things/weather-icons/master/animated/snowy-2.svg" width="171">
+      <% end %>
+      <% if @snow_tomorrow2 < 0.2 %>
+        <% if @rain_tomorrow2 >= 5 %>
+          <img src="https://raw.githubusercontent.com/Makin-Things/weather-icons/master/animated/rainy-3.svg" width="171">
+        <% end %>
+        <% if @rain_tomorrow2 < 5 %>
+          <img src="https://raw.githubusercontent.com/Makin-Things/weather-icons/master/animated/cloudy-1-day.svg" width="171">
+        <% end %>
+      <% end %>
+      <h2 class="card-text a"><%= @later4temp %>&deg;C</h2>
+    </div>
+  </div>
+  <div class=" glass card" style="width: 12rem;">
+    <div class="card-body">
+      <h3 class="card-title a"><%= @formatted_cl8htime %></h3> <!-- prikaz trenutne temperature i ikone za trenutnu prognozu za dan nakon prekosutra -->
+      <% if @snow_tomorrow3 > 0.2 %>
+        <img src="https://raw.githubusercontent.com/Makin-Things/weather-icons/master/animated/snowy-2.svg" width="171">
+      <% end %>
+      <% if @snow_tomorrow3 < 0.2 %>
+        <% if @rain_tomorrow3 >= 5 %>
+          <img src="https://raw.githubusercontent.com/Makin-Things/weather-icons/master/animated/rainy-3.svg" width="171">
+        <% end %>
+        <% if @rain_tomorrow3 < 5 %>
+          <img src="https://raw.githubusercontent.com/Makin-Things/weather-icons/master/animated/cloudy-1-day.svg" width="171">
+        <% end %>
+      <% end %>
+      <h2 class="card-text a"><%= @later8temp %>&deg;C</h2>
+    </div>
+  </div>
+  <div class=" glass card" style="width: 12rem;">
+    <div class="card-body">
+      <h3 class="card-title a"><%= @formatted_cl12htime %></h3> <!-- prikaz trenutne temperature i ikone za trenutnu prognozu za 2 dana nakon prekosutra -->
+      <% if @snow_tomorrow4 > 0.2 %>
+        <img src="https://raw.githubusercontent.com/Makin-Things/weather-icons/master/animated/snowy-2.svg" width="171">
+      <% end %>
+      <% if @snow_tomorrow4 < 0.2 %>
+        <% if @rain_tomorrow4 >= 5 %>
+          <img src="https://raw.githubusercontent.com/Makin-Things/weather-icons/master/animated/rainy-3.svg" width="171">
+        <% end %>
+        <% if @rain_tomorrow4 < 5 %>
+          <img src="https://raw.githubusercontent.com/Makin-Things/weather-icons/master/animated/cloudy-1-day.svg" width="171">
+        <% end %>
+      <% end %>
+      <h2 class="card-text a"><%= @later12temp %>&deg;C</h2>
+    </div>
+  </div>
+  <div class=" glass card" style="width: 12rem;">
+    <div class="card-body">
+      <h3 class="card-title a"><%= @formatted_cl16htime %></h3> <!-- prikaz trenutne temperature i ikone za trenutnu prognozu za dan nakon prekosutra -->
+      <% if @snow_tomorrow3 > 0.2 %>
+        <img src="https://raw.githubusercontent.com/Makin-Things/weather-icons/master/animated/snowy-2.svg" width="171">
+      <% end %>
+      <% if @snow_tomorrow3 < 0.2 %>
+        <% if @rain_tomorrow3 >= 5 %>
+          <img src="https://raw.githubusercontent.com/Makin-Things/weather-icons/master/animated/rainy-3.svg" width="171">
+        <% end %>
+        <% if @rain_tomorrow3 < 5 %>
+          <img src="https://raw.githubusercontent.com/Makin-Things/weather-icons/master/animated/cloudy-1-day.svg" width="171">
+        <% end %>
+      <% end %>
+      <h2 class="card-text a"><%= @later16temp %>&deg;C</h2>
+    </div>
+  </div>
+  <div class=" glass card" style="width: 12rem;">
+    <div class="card-body">
+      <h3 class="card-title a"><%= @formatted_cl20htime %></h3> <!-- prikaz trenutne temperature i ikone za trenutnu prognozu za 2 dana nakon prekosutra -->
+      <% if @snow_tomorrow4 > 0.2 %>
+        <img src="https://raw.githubusercontent.com/Makin-Things/weather-icons/master/animated/snowy-2.svg" width="171">
+      <% end %>
+      <% if @snow_tomorrow4 < 0.2 %>
+        <% if @rain_tomorrow4 >= 5 %>
+          <img src="https://raw.githubusercontent.com/Makin-Things/weather-icons/master/animated/rainy-3.svg" width="171">
+        <% end %>
+        <% if @rain_tomorrow4 < 5 %>
+          <img src="https://raw.githubusercontent.com/Makin-Things/weather-icons/master/animated/cloudy-1-day.svg" width="171">
+        <% end %>
+      <% end %>
+      <h2 class="card-text a"><%= @later20temp %>&deg;C</h2>
+    </div>
+  </div>
 </div>
 
 <div class="mb-4 p-5 glass text-white rounded a d-flex justify-content-evenly"> <!-- prikaz trenutne temperature i ikone za trenutnu prognozu za slijedeće dane -->
