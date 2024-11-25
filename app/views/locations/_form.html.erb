@@ -1,16 +1,16 @@
 <%= form_with(model: location) do |form| %>
   <% if location.errors.any? %>
     <div style="color: red">
-      <h2><%= pluralize(location.errors.count, "error") %> prohibited this location from being saved:</h2>
+      <h2><%= pluralize(location.errors.count, "error") %> prohibited this location from being saved:</h2> <!-- error handling-->
 
       <ul>
         <% location.errors.each do |error| %>
-          <li><%= error.full_message %></li>
+          <li><%= error.full_message %></li> <!-- izbacivanje poruke greške-->
         <% end %>
       </ul>
     </div>
   <% end %>
-  <div class="row">
+  <div class="row"> <!-- izgled forme-->
     <div class="col">
       <div class="form-floating mb-3">
         <%= form.text_field :address, class: "form-control", placeholder: "first name", id: "floatingInput" %>
@@ -20,12 +20,12 @@
 
     <div class="col">
       <div class="form-floating mb-3">
-        <%= form.text_field :latitude, class: "form-control", placeholder: "first name", id: "floatingInput", type: :hidden %>
+        <%= form.text_field :latitude, class: "form-control", placeholder: "first name", id: "floatingInput", type: :hidden %> <!-- skriven text_field -->
       </div>
     </div>
 
     <div class="form-floating mb-3">
-      <%= form.text_field :longitude, class: "form-control", placeholder: "first name", id: "floatingInput", type: :hidden %>
+      <%= form.text_field :longitude, class: "form-control", placeholder: "first name", id: "floatingInput", type: :hidden %> <!-- skriven text_field -->
     </div>
 
     <div>

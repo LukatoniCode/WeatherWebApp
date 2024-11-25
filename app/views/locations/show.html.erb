@@ -28,17 +28,17 @@
       -webkit-backdrop-filter: blur(16.5px);
       border: 1px solid rgba(104, 255, 255, 0.01);
     }
-    
+
   </style>
 </head>
 
-<div class="mb-4 p-5 glass text-white rounded d-flex justify-content-between">
+<div class="mb-4 p-5 glass text-white rounded d-flex justify-content-between"> <!-- prikaz trenutne temperature i ikone za trenutnu prognozu -->
   <div>
     <h2><%= render @location %> Current temperature:</h2>
-    <h1 style="font-size: 50px"><%= @output %>&deg;C</h1>
+    <h1 style="font-size: 50px"><%= @output %>&deg;C</h1><!-- trenutna temperatura -->
   </div>
   <div>
-    <% if @is_day == 1 %>
+    <% if @is_day == 1 %> <!-- ikone za trenutnu prognozu vremena tijekom dana -->
       <% if @snow_today > 0.2 %>
         <img src="https://raw.githubusercontent.com/Makin-Things/weather-icons/master/animated/snowy-2.svg" width="256">
       <% end %>
@@ -56,7 +56,7 @@
         <% end %>
       <% end %>
     <% end %>
-    <% if @is_day == 0 %>
+    <% if @is_day == 0 %> <!-- ikone za trenutnu prognozu vremena tijekom noći -->
       <% if @snow_today > 0.2 %>
         <img src="https://raw.githubusercontent.com/Makin-Things/weather-icons/master/animated/snowy-2-night.svg" width="256">
       <% end %>
@@ -77,10 +77,13 @@
   </div>
 </div>
 
-<div class="mb-4 p-5 glass text-white rounded a d-flex justify-content-evenly">
+<div class="mb-4 p-5 glass text-white rounded d-flex justify-content-between">
+</div>
+
+<div class="mb-4 p-5 glass text-white rounded a d-flex justify-content-evenly"> <!-- prikaz trenutne temperature i ikone za trenutnu prognozu za slijedeće dane -->
   <div class=" glass card" style="width: 18rem;">
     <div class="card-body">
-      <h3 class="card-title a">Tomorrow</h3>
+      <h3 class="card-title a">Tomorrow</h3> <!-- prikaz trenutne temperature i ikone za trenutnu prognozu za sutra -->
       <% if @snow_tomorrow > 0.2 %>
         <img src="https://raw.githubusercontent.com/Makin-Things/weather-icons/master/animated/snowy-2.svg" width="256">
       <% end %>
@@ -92,12 +95,12 @@
           <img src="https://raw.githubusercontent.com/Makin-Things/weather-icons/master/animated/cloudy-1-day.svg" width="256">
         <% end %>
       <% end %>
-      <h2 class="card-text a"><%= @min_temp_tomorrow %>&deg;C/<%= @max_temp_tomorrow %>&deg;C</h1>
+      <h2 class="card-text a"><%= @min_temp_tomorrow %>&deg;C/<%= @max_temp_tomorrow %>&deg;C</h2>
     </div>
   </div>
   <div class=" glass card" style="width: 18rem;">
     <div class="card-body">
-      <h3 class="card-title a"><%= @tomorrow_2_name %></h3>
+      <h3 class="card-title a"><%= @tomorrow_2_name %></h3> <!-- prikaz trenutne temperature i ikone za trenutnu prognozu za prekosutra -->
       <% if @snow_tomorrow2 > 0.2 %>
         <img src="https://raw.githubusercontent.com/Makin-Things/weather-icons/master/animated/snowy-2.svg" width="256">
       <% end %>
@@ -109,12 +112,12 @@
           <img src="https://raw.githubusercontent.com/Makin-Things/weather-icons/master/animated/cloudy-1-day.svg" width="256">
         <% end %>
       <% end %>
-      <h2 class="card-text a"><%= @min_temp_tomorrow2 %>&deg;C/<%= @max_temp_tomorrow2 %>&deg;C</h1>
+      <h2 class="card-text a"><%= @min_temp_tomorrow2 %>&deg;C/<%= @max_temp_tomorrow2 %>&deg;C</h2>
     </div>
   </div>
   <div class=" glass card" style="width: 18rem;">
     <div class="card-body">
-      <h3 class="card-title a"><%= @tomorrow_3_name %></h3>
+      <h3 class="card-title a"><%= @tomorrow_3_name %></h3> <!-- prikaz trenutne temperature i ikone za trenutnu prognozu za dan nakon prekosutra -->
       <% if @snow_tomorrow3 > 0.2 %>
         <img src="https://raw.githubusercontent.com/Makin-Things/weather-icons/master/animated/snowy-2.svg" width="256">
       <% end %>
@@ -126,12 +129,12 @@
           <img src="https://raw.githubusercontent.com/Makin-Things/weather-icons/master/animated/cloudy-1-day.svg" width="256">
         <% end %>
       <% end %>
-      <h2 class="card-text a"><%= @min_temp_tomorrow3 %>&deg;C/<%= @max_temp_tomorrow3 %>&deg;C</h1>
+      <h2 class="card-text a"><%= @min_temp_tomorrow3 %>&deg;C/<%= @max_temp_tomorrow3 %>&deg;C</h2>
     </div>
   </div>
   <div class=" glass card" style="width: 18rem;">
     <div class="card-body">
-      <h3 class="card-title a"><%= @tomorrow_4_name %></h3>
+      <h3 class="card-title a"><%= @tomorrow_4_name %></h3> <!-- prikaz trenutne temperature i ikone za trenutnu prognozu za 2 dana nakon prekosutra -->
       <% if @snow_tomorrow4 > 0.2 %>
         <img src="https://raw.githubusercontent.com/Makin-Things/weather-icons/master/animated/snowy-2.svg" width="256">
       <% end %>
@@ -143,25 +146,25 @@
           <img src="https://raw.githubusercontent.com/Makin-Things/weather-icons/master/animated/cloudy-1-day.svg" width="256">
         <% end %>
       <% end %>
-      <h2 class="card-text a"><%= @min_temp_tomorrow4 %>&deg;C/<%= @max_temp_tomorrow4 %>&deg;C</h1>
+      <h2 class="card-text a"><%= @min_temp_tomorrow4 %>&deg;C/<%= @max_temp_tomorrow4 %>&deg;C</h2>
     </div>
   </div>
 </div>
 
 <div>
-  <%= link_to "Edit this location", edit_location_path(@location), class:"btn glass-btn" %> |
+  <%= link_to "Edit this location", edit_location_path(@location), class:"btn glass-btn" %> | <!-- gumbi za navigaciju i konfiguraciju lokacije-->
   <%= link_to "Back to locations", locations_path, class:"btn glass-btn" %>
 
   <p>
-    
+
   </p>
 
-  <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">
+  <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal"> <!-- gumb za brisanje lokacije-->
     Delete this location
   </button>
 
   <!-- Modal -->
-  <div class="glassdngr modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="glassdngr modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true"> <!-- upozorenje i potvrda o brisanju-->
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
