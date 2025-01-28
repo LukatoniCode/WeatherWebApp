@@ -36,7 +36,7 @@ class LocationsController < ApplicationController
     client = OpenMeteo::Client.new
 
     location = OpenMeteo::Entities::Location.new(latitude: lat.to_d, longitude: lon.to_d)
-    variables = { current: %i[weather_code temperature_2m rain snowfall cloud_cover is_day], daily: %i[weather_code temperature_2m_max temperature_2m_min rain_sum snowfall_sum], hourly: %i[temperature_2m rain snowfall cloud_cover visibility]}
+    variables = { current: %i[weather_code temperature_2m rain snowfall cloud_cover is_day, wind_speed_10m, wind_direction_10m], daily: %i[weather_code temperature_2m_max temperature_2m_min rain_sum snowfall_sum], hourly: %i[temperature_2m rain snowfall cloud_cover visibility]}
     data = OpenMeteo::Forecast.new(client:).get(location:, variables:, model: :dwd_icon)
 
     currenttime = Time.now
@@ -119,6 +119,8 @@ class LocationsController < ApplicationController
     @cloud_today = data.current.instance_variable_get(:@item).instance_variable_get(:@raw_json)["cloud_cover"]
     @snow_today = data.current.instance_variable_get(:@item).instance_variable_get(:@raw_json)["snowfall"]
     @output = data.current.instance_variable_get(:@item).instance_variable_get(:@raw_json)["temperature_2m"]
+    @wind_speed = data.current.instance_variable_get(:@item).instance_variable_get(:@raw_json)["wind_speed_10m"]
+    @wind_dir = data.current.instance_variable_get(:@item).instance_variable_get(:@raw_json)["wind_direction_10m"]
     #@rain_today_s = data.daily.instance_variable_get(:@item).instance_variable_get(:@raw_json)["rain_sum"]
     @rain_today_s = today_forecast.rain_sum
     #rain_today_tets = today_forecast.rain_sum
