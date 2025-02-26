@@ -113,7 +113,7 @@
   <div class=" glass card" style="width: 12rem;">
     <div class="card-body">
       <h3 class="card-title a"><%= @formatted_cl4htime %></h3> <!-- prikaz trenutne temperature i ikone za trenutnu prognozu za prekosutra -->
-      <% if @formatted_cl4htime.to_i > 19 || @formatted_cl4htime.to_i < 7 %>
+      <% if @formatted_cl4htime.to_i >= 19 || @formatted_cl4htime.to_i < 7 %>
         <% if @snow_tomorrow > 0.2 %>
           <img src="https://raw.githubusercontent.com/Makin-Things/weather-icons/master/animated/snowy-2-night.svg" width="171">
         <% end %>
@@ -279,11 +279,11 @@
       <h2 class="card-text a"><%= @wind_speed %> km/h</h2>
     </div>
   </div>
-  <div class=" glass card" style="width: 18rem;">
+  <div class=" glass card" style="width: 18rem; height: 15em;">
     <div class="card-body mx-auto p-2">
       <h3 class="card-title a">Wind direction</h3>
       <div class="card-body mx-auto p-2">
-        <svg xmlns="http://www.w3.org/2000/svg" height="8em" fill="#82ceff" viewBox="0 0 512 512" width="171">
+        <svg xmlns="http://www.w3.org/2000/svg" height="8em" fill="#82ceff" viewBox="0 0 512 512" width="171" transform="rotate(<%= @wind_dir %>)">
           <path d="M 275.42857142857144 8 Q 267.42857142857144 0 256 0 Q 244.57142857142858 0 236.57142857142858 8 L 44.57142857142857 209.14285714285714 L 44.57142857142857 209.14285714285714 Q 28.571428571428573 229.71428571428572 44.57142857142857 248 Q 65.14285714285714 264 83.42857142857143 246.85714285714286 L 228.57142857142858 96 L 228.57142857142858 96 L 228.57142857142858 484.57142857142856 L 228.57142857142858 484.57142857142856 Q 230.85714285714286 509.7142857142857 256 512 Q 281.14285714285717 509.7142857142857 283.42857142857144 484.57142857142856 L 283.42857142857144 96 L 283.42857142857144 96 L 428.57142857142856 248 L 428.57142857142856 248 Q 446.85714285714283 264 467.42857142857144 248 Q 483.42857142857144 229.71428571428572 467.42857142857144 210.28571428571428 L 275.42857142857144 9.142857142857142 L 275.42857142857144 8 Z" />
         </svg>
       </div>
